@@ -7,7 +7,9 @@ export const colors = {
     background: "#E5E5E5",
     activeText: "#FFFFFF",
     secondaryText: "#929292",
+    imagePlaceholder: "#C4C4C4",
     primaryText: "#000000",
+    titleText: "#4F4F4F",
 };
 
 const root = document.documentElement;
