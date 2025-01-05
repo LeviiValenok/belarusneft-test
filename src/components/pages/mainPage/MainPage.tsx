@@ -1,10 +1,10 @@
+import Header from "./header/Header.tsx";
+
 const MainPage = () => {
-    const bla = "";
     return (
-        <div>
-            MainPage
-            ${bla}
-        </div>
+        <>
+            <Header />
+        </>
     );
 }
 

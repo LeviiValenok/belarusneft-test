@@ -1,4 +1,5 @@
 import './App.css'
+import '../src/styles/colors.ts';
 import { BrowserRouter, Route, Routes } from "react-router";
 import MainPage from "./components/pages/mainPage/MainPage.tsx";
 import NotFound from "./components/pages/notFound/NotFound.tsx";

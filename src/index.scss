@@ -1,0 +1,27 @@
+html, body, #root {
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background: var(--primaryColor);
+  border-radius: 5px;
+  border: none;
+  color: var(--activeText);
+  padding: 6px 28px 7px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--hover);
+  }
+
+  &:disabled {
+    background-color: var(--disabled);
+    cursor: not-allowed;
+  }
+}
