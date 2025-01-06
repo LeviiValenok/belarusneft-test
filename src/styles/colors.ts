@@ -13,6 +13,8 @@ export const colors = {
     cardBackground: "#E5E5E5",
     cardHover: "#F6F6F6",
     lightGrey: "#828282",
+    inputBackground: "#E0E0E0",
+    errorBorder: "#EB5757",
 };
 
 const root = document.documentElement;

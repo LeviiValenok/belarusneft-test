@@ -1,0 +1,42 @@
+.authModalWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px 26px;
+  box-sizing: border-box;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  padding: 0;
+  margin: 0 0 22px 0;
+}
+
+.textButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  color: var(--primaryColor);
+  text-decoration: underline;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    background: none;
+  }
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: flex-end;
+}

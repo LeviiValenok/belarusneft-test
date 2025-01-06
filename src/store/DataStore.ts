@@ -1,6 +1,6 @@
 import { action, makeObservable, observable, computed } from "mobx";
 import { simulateApiRequest } from "../api/simulatedApi";
-import { emptyYouTubeVideo, YouTubeVideo } from "../interfaces/YouTubeVideo";
+import { YouTubeVideo } from "../interfaces/YouTubeVideo";
 
 export type PaginationType = {
     page: number;
@@ -18,22 +18,26 @@ class DataStore {
     protected _pagination: PaginationType = paginationDefaultState;
     public videos: YouTubeVideo[] = [];
     public _selectedVideo: YouTubeVideo | null = null;
+    public searchQuery: string = "";
+    public filteredVideosList: YouTubeVideo[] = [];
 
     constructor() {
         makeObservable(this, {
             _pagination: observable,
             _selectedVideo: observable,
+            filteredVideosList: observable,
             videos: observable,
+            searchQuery: observable,
             setCurrentPage: action,
             setItemsPerPage: action,
             fetchVideos: action,
             getVideoById: action,
+            setSearchQuery: action,
             pagination: computed,
             selectedVideo: computed,
+            executeSearch: action,
             totalPages: computed,
         });
-
-        this.fetchVideos();
     }
 
     public setCurrentPage = (page: number) => {
@@ -76,6 +80,23 @@ class DataStore {
 
         this.videos = response.items;
         this.setTotalItems(response.pageInfo.totalResults);
+    };
+
+    public setSearchQuery = (query: string) => {
+        this.searchQuery = query;
+    };
+
+    public executeSearch = () => {
+        this.fetchVideos();
+        if (!this.searchQuery.trim()) {
+            this.filteredVideosList = this.videos; // Show all videos if query is empty
+            return;
+        }
+
+        const lowerCaseQuery = this.searchQuery.toLowerCase();
+        this.filteredVideosList = this.videos.filter((video) =>
+            video.snippet.title.toLowerCase().includes(lowerCaseQuery)
+        );
     };
 }
 

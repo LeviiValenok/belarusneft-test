@@ -1,0 +1,25 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+
+  h4 {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0 0 0 6px;
+    padding: 0;
+    color: var(--lightGrey);
+  }
+
+  input {
+    height: 36px;
+    background: var(--inputBackground);
+    border: 0;
+  }
+
+  &.error {
+    border-bottom: 5px solid var(--errorBorder);
+    border-radius: 0 0 5px 5px;
+  }
+}
