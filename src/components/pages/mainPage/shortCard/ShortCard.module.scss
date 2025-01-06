@@ -1,10 +1,18 @@
 .shortCardWrapper {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   padding: 20px 21px 19px;
   border-radius: 5px;
   border-bottom: 5px solid var(--border-color, #000);
+  background-color: var(--cardBackground);
+  width: 263px;
+
+  img {
+    margin-bottom: 21px;
+  }
 }
+
 
 .imagePlaceholder {
   display: block;
@@ -31,30 +39,36 @@
   h3 {
     font-size: 10px;
     padding: 0;
+    margin: 0;
     color: var(--primaryText);
   }
 }
 
 .title {
-  display: flex;
-  flex-direction: row;
-  text-align: left;
+  display: block;
+  text-align: end;
   text-transform: uppercase;
-  margin-bottom: 4px;
-  h1 {
-    font-size: 20px;
-    padding: 0;
-    color: var(--titleText);
-  }
+  margin: 0 0 4px;
+  color: var(--titleText);
+  font-size: 20px;
+  padding: 0;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 227px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .publishedDate {
   display: flex;
   flex-direction: row;
-  text-align: left;
-  margin-bottom: 36px;
-  h2 {
-    font-size: 12px;
-    padding: 0;
-  }
+  justify-content: flex-end;
+  margin: 0 0 36px;
+  font-size: 12px;
+  padding: 0;
+  text-align: end;
+  font-weight: 300;
+  color: var(--titleText);
 }

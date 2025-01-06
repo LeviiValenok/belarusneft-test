@@ -1,0 +1,82 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+  gap: 10px;
+}
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pageButton {
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--primaryText);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--white);
+
+  &:hover {
+    background: var(--white);
+    border-color: var(--primaryColor);
+  }
+}
+
+.selectedPageButton {
+  border: 1px solid var(--primaryColor);
+  color: var(--primaryText);
+  font-weight: bold;
+}
+
+.itemsPerPage {
+  display: flex;
+  justify-content: center;
+
+  select {
+    border: 1px solid #ccc;
+    width: 105px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover {
+      border-color: var(--primaryColor);
+    }
+  }
+}
+
+.customArrow {
+  position: relative;
+  right: 22px;
+  top: 18px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.videoList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 28px;
+  margin: 0 auto;
+  gap: 28px;
+  justify-items: center;
+  box-sizing: border-box;
+  max-width: 1200px;
+}
+
+.videoItem {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}

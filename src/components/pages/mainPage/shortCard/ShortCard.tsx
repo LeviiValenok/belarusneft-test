@@ -7,7 +7,7 @@ import disliked from "../../../../assets/dislike.svg";
 
 export interface ShortCardProps {
     borderColor: string;
-    podcastNumber: string
+    title: string
     publishedDate: string;
     image?: string;
     likes?: string;
@@ -18,7 +18,7 @@ export interface ShortCardProps {
 
 const ShortCard = ({
    borderColor,
-   podcastNumber = "",
+   title = "",
    publishedDate = "01.01.2024",
    image,
    likes = "0",
@@ -58,7 +58,7 @@ const ShortCard = ({
                 </div>
             </div>
             <h1 className={styles.title}>
-                Подскаст #&nbsp;{podcastNumber}
+                {title}
             </h1>
             <h2 className={styles.publishedDate}>
                 {publishedDate}

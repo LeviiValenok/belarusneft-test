@@ -1,5 +1,6 @@
-import Header from "./header/Header.tsx";
+import Header from "./header/Header";
 import styles from "./mainPage.module.scss";
+import Pagination from "../../pagination/Pagination";
 
 const MainPage = () => {
     return (
@@ -7,6 +8,7 @@ const MainPage = () => {
             <Header />
             <section className={styles.cardSection}>
             </section>
+            <Pagination />
         </div>
     );
 }

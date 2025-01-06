@@ -10,6 +10,7 @@ export const colors = {
     imagePlaceholder: "#C4C4C4",
     primaryText: "#000000",
     titleText: "#4F4F4F",
+    cardBackground: "#E5E5E5"
 };
 
 const root = document.documentElement;
