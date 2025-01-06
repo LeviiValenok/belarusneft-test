@@ -25,7 +25,7 @@ function getBorderColor(publishDate: string) {
                 : '#2F80ED';
 }
 
-const Pagination: React.FC = observer(() => {
+const Pagination = () => {
     const { totalPages, videos, setCurrentPage, setItemsPerPage } =
         dataStore;
 
@@ -93,6 +93,6 @@ const Pagination: React.FC = observer(() => {
                 </div>
             </div>
         </div>);
-});
+};
 
-export default Pagination;
+export default observer(Pagination);

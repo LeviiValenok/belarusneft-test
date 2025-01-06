@@ -1,9 +1,9 @@
 import styles from "./FullCard.module.scss";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import dataStore from "../../../store/DataStore";
 import { observer } from "mobx-react";
 import Statisctics from "../mainPage/shortCard/Statisctics";
-import React from "react";
+import React, { useEffect } from "react";
 import backArrow from "../../../assets/back.svg";
 import { DateTime } from "ts-luxon";
 
@@ -14,6 +14,7 @@ function convertDate(isoDateString?: string) {
 }
 
 const FullCard = () => {
+    const { id } = useParams();
     const { state: borderColor } = useLocation();
     const navigate = useNavigate();
     const { selectedVideo } = dataStore;
@@ -21,6 +22,12 @@ const FullCard = () => {
     const handleNavigateToPrePage = () => {
         navigate("/");
     }
+
+    useEffect(() => {
+        if (!selectedVideo && id) {
+            dataStore.getVideoById(id);
+        }
+    }, [id]);
 
     return (
         <div className={styles.pageWrapper}>

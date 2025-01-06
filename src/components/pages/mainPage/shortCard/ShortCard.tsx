@@ -3,6 +3,7 @@ import styles from "./ShortCard.module.scss";;
 import { useNavigate } from "react-router";
 import Statisctics from "../../mainPage/shortCard/Statisctics";
 import dataStore from "../../../../store/DataStore";
+import { observer } from "mobx-react";
 
 export interface ShortCardProps {
     cardId: string;
@@ -62,4 +63,4 @@ const ShortCard = ({
     );
 }
 
-export default ShortCard;
+export default observer(ShortCard);
