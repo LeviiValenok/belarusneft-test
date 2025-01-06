@@ -1,4 +1,3 @@
-// components/Pagination.tsx
 import React from "react";
 import { observer } from "mobx-react-lite";
 import styles from "./Pagination.module.scss";
@@ -11,6 +10,19 @@ import shevron from "../../assets/shevron.svg";
 function formatDate(isoDateString: string) {
     const dateTime = DateTime.fromISO(isoDateString, { zone: 'utc' });
     return dateTime.toFormat('dd.MM.yyyy');
+}
+
+function getBorderColor(publishDate: string) {
+    const publishedDate = DateTime.fromFormat(publishDate, 'dd.MM.yyyy');
+    const diffDays = DateTime.now().diff(publishedDate, 'days').days;
+
+    return diffDays > 180
+        ? '#EB5757'
+        : diffDays > 30
+            ? '#F2C94C'
+            : diffDays > 7
+                ? '#27AE60'
+                : '#2F80ED';
 }
 
 const Pagination: React.FC = observer(() => {
@@ -33,10 +45,12 @@ const Pagination: React.FC = observer(() => {
                 {videos.map((video) => {
                     const { statistics, snippet } = video;
                     const publishDate = formatDate(snippet.publishedAt);
+                    const borderColor = getBorderColor(publishDate);
                     return (
                         <ShortCard
+                            cardId={video.id}
                             key={video.id}
-                            borderColor={colors.primaryColor}
+                            borderColor={borderColor}
                             title={snippet.title}
                             publishedDate={publishDate}
                             image={snippet.thumbnails.medium.url}

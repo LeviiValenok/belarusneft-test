@@ -1,0 +1,77 @@
+.pageWrapper {
+  margin: 147px 40px 212px 200px;
+  box-sizing: border-box;
+}
+
+.fullCardWrapper {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 35px 37px 8px 34px;
+  gap: 15px;
+  border-bottom: 5px solid var(--border-color, #000);
+  background-color: var(--cardBackground);
+}
+
+.cardInfoTitleWrapper {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 15px;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    text-wrap: wrap;
+    text-align: left;
+    color: var(--primaryText);
+  }
+
+  h5 {
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    color: var(--lightGrey);
+  }
+}
+
+.descriptionTittle {
+  font-size: 14px;
+  color: var(--primaryText);
+  font-weight: bold;
+  text-align: left;
+}
+
+.description {
+  font-size: 12px;
+  max-height: 280px;
+  font-weight: 400;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.descriptionSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  :last-child {
+    justify-content: center;
+  }
+}
+
+.backButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px 0 0 5px;
+}

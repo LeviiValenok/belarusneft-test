@@ -8,6 +8,10 @@
   background-color: var(--cardBackground);
   width: 263px;
 
+  &:hover {
+    background-color: var(--cardHover);
+  }
+
   img {
     margin-bottom: 21px;
   }

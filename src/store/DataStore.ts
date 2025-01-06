@@ -1,6 +1,6 @@
 import { action, makeObservable, observable, computed } from "mobx";
 import { simulateApiRequest } from "../api/simulatedApi";
-import { YouTubeVideo } from "../interfaces/YouTubeVideo";
+import { emptyYouTubeVideo, YouTubeVideo } from "../interfaces/YouTubeVideo";
 
 export type PaginationType = {
     page: number;
@@ -17,15 +17,19 @@ const paginationDefaultState: Readonly<PaginationType> = {
 class DataStore {
     protected _pagination: PaginationType = paginationDefaultState;
     public videos: YouTubeVideo[] = [];
+    public _selectedVideo: YouTubeVideo | null = null;
 
     constructor() {
         makeObservable(this, {
             _pagination: observable,
+            _selectedVideo: observable,
             videos: observable,
             setCurrentPage: action,
             setItemsPerPage: action,
             fetchVideos: action,
+            getVideoById: action,
             pagination: computed,
+            selectedVideo: computed,
             totalPages: computed,
         });
 
@@ -56,6 +60,14 @@ class DataStore {
 
     public get totalPages(): number {
         return Math.ceil(this._pagination.totalItems / this._pagination.itemsPerPage);
+    }
+
+    public get selectedVideo(): YouTubeVideo | null {
+        return this._selectedVideo;
+    }
+
+    public getVideoById(id: string) {
+        this._selectedVideo = this.videos.find((video) => video.id === id) || null;
     }
 
     public fetchVideos = () => {
