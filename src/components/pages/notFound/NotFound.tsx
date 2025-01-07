@@ -1,9 +1,23 @@
+import styles from "./NotFound.module.scss";
+import notfound from "../../../assets/notfound.svg";
+import { useNavigate } from "react-router";
+
 const NotFound = () => {
-    const text = "";
+    const navigate = useNavigate();
+
+    const handleNavigate = () => navigate("/");
+
     return (
-        <div>
-            Not Found
-            ${text}
+        <div className={styles.pageWrapper}>
+           <div className={styles.message}>
+               <img src={notfound} width="100" height="100" alt="notfound" />
+               <h2>
+                   Что-то пошло не так...
+               </h2>
+           </div>
+            <button className={styles.textButton} onClick={handleNavigate}>
+                Вернуться на главную
+            </button>
         </div>
     )
 }

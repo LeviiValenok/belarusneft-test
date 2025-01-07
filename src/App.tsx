@@ -13,8 +13,8 @@ function App() {
               <Route path="/" element={<Layout />}>
                   <Route path="/" element={<MainPage />} />
                   <Route path=":id" element={<FullCard />} />
+                  <Route path="/notfound" element={<NotFound />} />
               </Route>
-              <Route path="*" element={<NotFound />} />
           </Routes>
       </BrowserRouter>
   )

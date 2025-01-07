@@ -1,0 +1,42 @@
+.pageWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+  margin: 331px auto 389px auto;
+  width: 100%;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  gap: 27px;
+  align-items: center;
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    max-width: 233px;
+    text-align: left;
+    color: var(--lightGrey);
+  }
+}
+
+.textButton {
+  position: relative;
+  left: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  color: var(--primaryColor);
+  border: none;
+  padding: 0;
+
+  &:hover {
+    background: none;
+  }
+}

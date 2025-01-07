@@ -74,6 +74,7 @@ class DataStore {
     }
 
     public getVideoById(id: string) {
+        this.fetchVideos();
         this._selectedVideo = this.videos.find((video) => video.id === id) || null;
     }
 

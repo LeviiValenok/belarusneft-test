@@ -24,10 +24,14 @@ const FullCard = () => {
     }
 
     useEffect(() => {
-        if (!selectedVideo && id) {
+        if (id) {
             dataStore.getVideoById(id);
         }
     }, [id]);
+
+    if (!selectedVideo) {
+        navigate("/notfound");
+    }
 
     return (
         <div className={styles.pageWrapper}>
