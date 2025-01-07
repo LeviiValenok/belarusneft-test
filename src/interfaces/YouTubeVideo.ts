@@ -1,4 +1,3 @@
-// interfaces/YouTubeVideo.ts
 export interface Thumbnail {
     url: string;
     width: number;

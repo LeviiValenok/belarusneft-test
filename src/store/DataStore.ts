@@ -20,6 +20,7 @@ class DataStore {
     public _selectedVideo: YouTubeVideo | null = null;
     public searchQuery: string = "";
     public filteredVideosList: YouTubeVideo[] = [];
+    private sortDirection: "asc" | "desc" = "asc";
 
     constructor() {
         makeObservable(this, {
@@ -33,6 +34,8 @@ class DataStore {
             fetchVideos: action,
             getVideoById: action,
             setSearchQuery: action,
+            toggleSort: action,
+            sortByWord: action,
             pagination: computed,
             selectedVideo: computed,
             executeSearch: action,
@@ -80,6 +83,8 @@ class DataStore {
 
         this.videos = response.items;
         this.setTotalItems(response.pageInfo.totalResults);
+
+        this.filteredVideosList = this.videos;
     };
 
     public setSearchQuery = (query: string) => {
@@ -89,7 +94,7 @@ class DataStore {
     public executeSearch = () => {
         this.fetchVideos();
         if (!this.searchQuery.trim()) {
-            this.filteredVideosList = this.videos; // Show all videos if query is empty
+            this.filteredVideosList = this.videos;
             return;
         }
 
@@ -98,6 +103,50 @@ class DataStore {
             video.snippet.title.toLowerCase().includes(lowerCaseQuery)
         );
     };
+
+    public toggleSort(orderBy: 'date' | 'views') {
+        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+        this.sortVideos(orderBy, this.sortDirection);
+    }
+
+    private sortVideos(orderBy: 'date' | 'views', direction: 'asc' | 'desc') {
+        this.filteredVideosList = [...this.videos].sort((a, b) => {
+            let comparison = 0;
+
+            if (orderBy === 'date') {
+                const dateA = new Date(a.snippet.publishedAt).getTime();
+                const dateB = new Date(b.snippet.publishedAt).getTime();
+                comparison = dateA - dateB;
+            } else if (orderBy === 'views') {
+                const viewsA = parseInt(a.statistics.viewCount, 10);
+                const viewsB = parseInt(b.statistics.viewCount, 10);
+                comparison = viewsA - viewsB;
+            }
+
+            return direction === 'asc' ? comparison : -comparison;
+        });
+    }
+
+    public sortByWord(word: string) {
+        if (!word.trim()) {
+            this.filteredVideosList = this.videos;
+            return;
+        }
+
+        const lowerCaseWord = word.toLowerCase();
+
+        this.filteredVideosList = [...this.videos].sort((a, b) => {
+            const titleA = a.snippet.title.toLowerCase();
+            const titleB = b.snippet.title.toLowerCase();
+
+            const scoreA = titleA.indexOf(lowerCaseWord);
+            const scoreB = titleB.indexOf(lowerCaseWord);
+
+            return scoreA - scoreB;
+        }).filter(video => {
+            return video.snippet.title.toLowerCase().includes(lowerCaseWord);
+        });
+    }
 }
 
 const dataStore = new DataStore();
